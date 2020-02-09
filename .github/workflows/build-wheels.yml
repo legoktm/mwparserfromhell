@@ -10,4 +10,13 @@ jobs:
     - name: Build manylinux Python wheels
       uses: RalfG/python-wheels-manylinux-build@v0.1
       with:
-        python-versions: 'cp35-cp35m cp36-cp36m cp37-cp37m cp38-cp38'
+        python-versions: 'cp34-cp34m cp35-cp35m cp36-cp36m cp37-cp37m cp38-cp38'
+    - name: Move to dists/
+      run: |
+        cp -v wheelhouse/*-manylinux1_x86_64.whl dists/
+    - name: Publish package to TestPyPI
+      uses: pypa/gh-action-pypi-publish@master
+      with:
+        user: __token__
+        password: ${{ secrets.test_pypi_password }}
+        repository_url: https://test.pypi.org/legacy/
