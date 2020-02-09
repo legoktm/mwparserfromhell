@@ -72,7 +72,7 @@ tokenizer = Extension("mwparserfromhell.parser._tokenizer",
                       depends=sorted(glob("mwparserfromhell/parser/ctokenizer/*.h")))
 
 setup(
-    name = "mwparserfromhell",
+    name = "mwparserfromhell-legoktm",
     packages = find_packages(exclude=("tests",)),
     ext_modules = [tokenizer] if use_extension else [],
     test_suite = "tests",
